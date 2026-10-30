@@ -1,0 +1,3 @@
+# Valeurs de base Open5GS (à adapter au chart retenu)
+# - nodeSelector : k8s-w1
+# - PLMN / TAC : à définir (ex. MCC 999, MNC 70 pour le lab)

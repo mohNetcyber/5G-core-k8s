@@ -1,0 +1,17 @@
+name: lint
+on: [push, pull_request]
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: shellcheck
+        run: find . -name '*.sh' -print0 | xargs -0 -r shellcheck
+      - name: yamllint
+        run: |
+          pip install yamllint
+          yamllint -d relaxed .
+      - name: kubeconform
+        run: |
+          curl -sL https://github.com/yannh/kubeconform/releases/latest/download/kubeconform-linux-amd64.tar.gz | tar xz
+          ./kubeconform -ignore-missing-schemas -summary core/manifests infra/addons monitoring/alerts

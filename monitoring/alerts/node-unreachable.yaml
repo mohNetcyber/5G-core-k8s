@@ -1,0 +1,16 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: node-unreachable
+  namespace: monitoring
+spec:
+  groups:
+    - name: nodes
+      rules:
+        - alert: NodeNotReady
+          expr: kube_node_status_condition{condition="Ready", status="true"} == 0
+          for: 30s
+          labels:
+            severity: critical
+          annotations:
+            summary: "Nœud injoignable : {{ $labels.node }}"

@@ -1,0 +1,16 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: 5g-nf-down
+  namespace: monitoring
+spec:
+  groups:
+    - name: 5g-core.nf
+      rules:
+        - alert: FiveGNFPodNotReady
+          expr: kube_pod_status_ready{namespace="open5gs", condition="true"} == 0
+          for: 30s
+          labels:
+            severity: critical
+          annotations:
+            summary: "NF 5G non prête : {{ $labels.pod }}"

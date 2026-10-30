@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Copier en join.sh (ignoré par Git) et remplacer les valeurs.
+kubeadm join 192.168.100.10:6443 \
+  --token <TOKEN> \
+  --discovery-token-ca-cert-hash sha256:<HASH>

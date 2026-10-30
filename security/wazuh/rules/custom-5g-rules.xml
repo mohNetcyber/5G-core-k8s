@@ -1,0 +1,4 @@
+<!-- Règles Wazuh personnalisées pour le cœur 5G (exemple à compléter) -->
+<group name="5g,">
+  <!-- TODO -->
+</group>

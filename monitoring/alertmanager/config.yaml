@@ -1,0 +1,6 @@
+# Exemple sans secrets. Les identifiants (SMTP, webhook) vont dans un Secret non versionné.
+route:
+  receiver: default
+  group_by: [alertname]
+receivers:
+  - name: default

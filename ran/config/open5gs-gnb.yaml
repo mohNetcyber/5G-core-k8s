@@ -1,0 +1,18 @@
+mcc: '999'
+mnc: '70'
+nci: '0x000000010'
+idLength: 32
+tac: 1
+
+linkIp: 192.168.100.20
+ngapIp: 192.168.100.20
+gtpIp: 192.168.100.20
+
+amfConfigs:
+  - address: 192.168.100.200   # AMF exposé par MetalLB (SCTP)
+    port: 38412
+
+slices:
+  - sst: 1
+
+ignoreStreamIds: true

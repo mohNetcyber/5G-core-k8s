@@ -1,0 +1,18 @@
+# Valeurs kube-prometheus-stack : monitoring isolé sur k8s-w2 (ENF4)
+prometheus:
+  prometheusSpec:
+    retention: 3d
+    nodeSelector:
+      kubernetes.io/hostname: k8s-w2
+    serviceMonitorSelectorNilUsesHelmValues: false
+    ruleSelectorNilUsesHelmValues: false
+grafana:
+  nodeSelector:
+    kubernetes.io/hostname: k8s-w2
+  sidecar:
+    dashboards:
+      enabled: true
+alertmanager:
+  alertmanagerSpec:
+    nodeSelector:
+      kubernetes.io/hostname: k8s-w2

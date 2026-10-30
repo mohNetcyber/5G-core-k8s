@@ -1,0 +1,21 @@
+# Secrets
+kubeconfig*
+*.kubeconfig
+admin.conf
+.env
+*.key
+*.pem
+infra/workers/join.sh
+secrets*.yaml
+
+# Résultats lourds
+results/captures/*.pcap
+results/captures/*.pcapng
+!results/captures/.gitkeep
+
+# Divers
+.ipynb_checkpoints/
+__pycache__/
+*.swp
+.DS_Store
+.vscode/

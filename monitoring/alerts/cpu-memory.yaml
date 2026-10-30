@@ -1,0 +1,23 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: cpu-memory
+  namespace: monitoring
+spec:
+  groups:
+    - name: resources
+      rules:
+        - alert: NodeHighCPU
+          expr: 100 - (avg by (instance) (rate(node_cpu_seconds_total{mode="idle"}[1m])) * 100) > 85
+          for: 1m
+          labels:
+            severity: warning
+          annotations:
+            summary: "CPU élevé sur {{ $labels.instance }}"
+        - alert: NodeHighMemory
+          expr: (1 - node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes) * 100 > 90
+          for: 2m
+          labels:
+            severity: warning
+          annotations:
+            summary: "Mémoire élevée sur {{ $labels.instance }}"

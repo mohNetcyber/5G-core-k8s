@@ -1,0 +1,2 @@
+# Variante avec readinessProbe et requests/limits réglés.
+# Sert à comparer les temps de reprise T4/T5 avec et sans réglage.
